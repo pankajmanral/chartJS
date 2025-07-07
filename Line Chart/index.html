@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Line Chart - Basic</title>
+</head>
+
+<style>
+    html {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+
+    <canvas id="line" height="600" width="800"></canvas>
+
+    <script>
+
+        const line = document.getElementById('line')
+
+        new Chart(line, {
+            type: 'line',
+            data: {
+                labels: ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                    {
+                        label: 'Dataset 1',
+                        data: [-28, 73, -34, -2, 90, -40, 65],
+                        // fill : true
+                        pointStyle: 'star',
+                        pointRadius: 5,
+                        pointHoverRadius: 10
+                    },
+                    {
+                        label: 'Dataset 2',
+                        data: [-93, 41, 43, -12, 77, -3, 0.5],
+                        // fill : true
+                        pointStyle: 'rectRot',
+                        pointRadius: 5,
+                        pointHoverRadius: 10
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Chart js Line Chart',
+                        align: 'start',
+                        font : {
+                            size : 20,
+                            family : "'Open Sans', sans-serif"
+                        }
+                    },
+                    subtitle: {
+                        display: true,
+                        text: 'This is the line chart example from chart js',
+                        position: 'bottom',
+                        align: 'start'
+                    },
+                    legend: {
+                        position: 'bottom',
+                        align: 'end'
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
