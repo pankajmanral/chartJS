@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Pie Chart</title>
+</head>
+
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        max-width: 100%;
+        width: 600px;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <script>
+
+        const pie = document.getElementById('pieChart')
+
+        new Chart(pie, {
+            type: 'pie',
+            data: {
+                labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+                datasets: [{
+                    data: [53, 22, 50, 31, 55],
+                    backgroundColor: [
+                        '#ff6384',
+                        '#ff9f40',
+                        '#ffcd56',
+                        '#4bc0c0',
+                        '#36a2eb'
+                    ]
+                }]
+            },
+            options: {
+                plugins: {
+                    title : {
+                        display : true,
+                        text : 'Pie Chart using Chart JS',
+                        position : 'top',
+                        align : 'center'
+                    },
+                    legend : {
+                        position : 'bottom'
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

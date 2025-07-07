@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Stacked Bar chart with group</title>
+</head>
+<body>
+
+    <canvas id="stackedGroup"></canvas>
+    
+    <script> 
+
+        const stackedGroup = document.getElementById('stackedGroup')
+
+        new Chart(stackedGroup,{
+            type : 'bar',
+            data : {
+                labels: ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July'],
+                datasets : [
+                    {
+                        label : 'Dataset 1',
+                        data : [87, 12, -93, 70, 60, 50, -82],
+                        backgroundColor: '#ff6384',
+                        stack : 'A'
+                    },
+                    {
+                        label : 'Dataset 2',
+                        data : [62, -29, 96, 85, -66, 73, 20],
+                        backgroundColor: '#36a2eb',
+                        stack : 'A'
+                    },
+                    {
+                        label : 'Dataset 3',
+                        data : [-31, 21, 5, -85, 12, 98, -30],
+                        backgroundColor: '#4bc0c0',
+                        stack : 'B'
+                    }
+                ]
+            },
+            options : {
+                responsive : true,
+                scale : {
+                    x : {
+                        stacked : true
+                    },
+                    y : {
+                        stacked : true,
+                        min : -150, 
+                        max : 150,
+                        ticks : {
+                            stepSize : 30
+                        }
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>First Chart using Chart JS</title>
+</head>
+
+<style>
+
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+
+</style>
+
+<body>
+    
+    <div>
+        <canvas id="myChart" height="40" width="100"></canvas>
+    </div>
+
+    <script> 
+
+        const myChart = document.getElementById('myChart')
+
+        new Chart(myChart, {
+            type : 'bar',
+            data : {
+                labels : [
+                    'Red',
+                    'Green',
+                    'Blue',
+                    'Yellow'
+                ],
+                datasets : [{
+                    label : 'Colors',
+                    data : [12,5,13,7],
+                    borderWidth : 1
+                }]
+            },
+            options : {
+                scales : {
+                    y : {
+                        beginAtZero : true
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

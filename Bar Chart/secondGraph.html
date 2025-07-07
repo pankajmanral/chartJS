@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>My Second Graph</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+
+    <div>
+        <canvas id="graph"></canvas>
+    </div>
+
+    <script>
+
+        const graph = document.getElementById("graph")
+
+        new Chart(graph, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Green", "Blue"],   // x axis labels
+                datasets: [
+                    {
+                        label: "Colors",
+                        data: [15, 25, 8],
+                        backgroundColor: 'rgba(255, 0, 0, 0.17)',
+                        borderRadius: 50,
+                        borderWidth : 2,
+                        borderColor : 'rgba(251, 0, 0, 1)',
+                        // barThickness : 150
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 30,
+                        ticks: {
+                            stepSize: 5,
+                            maxTicksLimit: 10
+                        }
+                    },
+                    x: {
+                        position: 'bottom'
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Pankaj Manral'
+                    }
+                }
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>

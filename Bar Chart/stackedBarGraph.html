@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Stacked Bar Graph</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+
+    <canvas id="graph"></canvas>
+
+    <script>
+
+        const graph = document.getElementById('graph')
+
+        new Chart(graph, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                    {
+                        label: 'Dataset 1',
+                        data: [-20, 79, 29, -65, 4, -23, 65],
+                        backgroundColor: '#ff6384',
+                    },
+                    {
+                        label: 'Dataset 2',
+                        data: [61, -56, 39, -83, -2, -77, 35],
+                        backgroundColor: '#36a2eb'
+                    },
+                    {
+                        label: 'Dataset 3',
+                        data: [3, -18, 86, 33, 83, -64, -51],
+                        backgroundColor: '#4bc0c0'
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        stacked: true,
+                        // grid: { display: false }
+                    },
+                    y: {
+                        stacked: true,
+                        // grid: { display: false },
+                        beginAtZero: true,
+                        min: -200,
+                        max: 200,
+                        ticks : {
+                            stepSize : 50
+                        }
+                    }
+                },
+                plugins: {
+                    title : {
+                        display : true,
+                        text : 'Stacked Bar Chart'
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

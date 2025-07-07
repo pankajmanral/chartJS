@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Negative Value Bar Graph</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+</style>
+
+<body>
+
+    <div>
+        <canvas id="myGraph"></canvas>
+    </div>
+
+    <script>
+
+        const graph = document.getElementById("myGraph")
+
+        new Chart(graph, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                    {
+                        label: 'Fully Rounded',
+                        data: [34, -79, 89, 40, -29, -15.37, 16],
+                        borderRadius: 100,
+                        borderSkipped : false,
+                        borderWidth : 2,
+                        borderColor : 'rgba(255, 0, 0, 1)',
+                        backgroundColor : 'rgba(255, 0, 0, 0.19)'
+                    },
+                    {
+                        label: 'Small Radius',
+                        data: [86, 19, 44, 51, 80, -85, -29],
+                        borderRadius: 5,
+                        borderSkipped : false,
+                        borderWidth : 2,
+                        borderColor : 'rgba(0, 98, 255, 1)',
+                        backgroundColor : 'rgba(0, 98, 255, 0.19)'
+                    }
+                ],
+            },
+            options: {
+                responsive : true,
+                y: {
+                    scales: {
+                        min: -100,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
