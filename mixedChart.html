@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Mixed chart bar chart with line chart</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1000px;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <canvas id="myGraph"></canvas>
+    </div>
+
+    <script>
+
+        const graph = document.getElementById('myGraph')
+
+        const myChart = new Chart(graph, {
+            data: {
+                labels: ['January', 'Feburary', 'March', 'April', 'May', 'June'],
+                datasets: [
+                    {
+                        type: 'bar',
+                        label: 'Bar Dateset',
+                        data: [-10, 20, 30, 40, 50, 75],
+                    },
+                    {
+                        type: 'bar',
+                        label: 'Bar Dataset 2',
+                        data: [20, -30, 10, 45, -30, 80],
+
+                    },
+                    {
+                        type: 'line',
+                        label: 'Line Dataset',
+                        data: [20, 10, 30, 15, -50, 80],
+                        fill: false,
+                        pointRadius : 10,
+                        tension : 0.2
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        min: -100,
+                        max: 100,
+                        ticks: {
+                            stepSize: 10,
+                            autoSkip: false
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Mixed bar chart using bar and line chart',
+                        align: 'start',
+                        font: {
+                            size: 20
+                        }
+                    },
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    }
+                }
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>

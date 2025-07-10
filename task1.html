@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Task 1</title>
+</head>
+
+<style>
+    .chart-wrapper{
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .chartWrapper{
+        width: 100%;
+        max-width: 250px;
+        height: 250px;
+    }
+</style>
+
+<body>
+
+    <div class="chart-wrapper">
+        <div class="chartWrapper">
+            <canvas id="chart" width="300" height="500"></canvas>
+        </div>
+    </div>
+
+    <script>
+
+        const myChart = document.getElementById('chart')
+
+        new Chart(myChart, {
+            type : 'bar',
+            data : {
+                labels : ['Pankaj','Manral'],
+                datasets : [{
+                    data : [40, 24],
+                    barPercentage : 0.5
+                }]
+            },
+            options : {
+                plugins : {
+                    legend : {
+                        display : false
+                    },
+                },
+                scales : {
+                    x : {
+                        grid : {
+                            display : false
+                        },
+                        border : {
+                            color : '#000000'
+                        }
+                    },
+                    y : {
+                        grid : {
+                            display : false,
+                        },
+                        border : {
+                            display : false
+                        },
+                        ticks : {
+                            display : false,
+                        }
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

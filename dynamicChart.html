@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Dynamic Chart using chart js</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1000px;
+    }
+
+    button {
+        padding: 10px 15px;
+        border: none;
+        font-family: sans-serif;
+        margin-top: 50px;
+        cursor: pointer;
+
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <canvas id="myChart"></canvas>
+        <button id="barChart">Bar Chart</button>
+        <button id="lineChart">Line Chart</button>
+    </div>
+
+    <script>
+
+        const myChart = document.getElementById('myChart')
+        const barChartBtn = document.getElementById('barChart')
+        const lineChartBtn = document.getElementById('lineChart')
+
+        const dynamicChart = new Chart(myChart, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                    {
+                        label: 'Dataset 1',
+                        data: [30, 50, 20, 10, 70, 80, 60]
+                    },
+                    {
+                        label: 'Dataset 2',
+                        data: [30, 50, 20, 10, 70, 80, 60]
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Dynamic Chart',
+                        align: 'start',
+                        font: {
+                            size: 25
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        max: 100,
+                        ticks: {
+                            stepSize: 20,
+                            autoSkip: false
+                        }
+                    }
+                }
+            }
+        })
+
+        lineChartBtn.addEventListener('click', () => {
+            dynamicChart.config.type = 'line'
+            dynamicChart.update()
+        })
+
+        barChartBtn.addEventListener('click', () => {
+            dynamicChart.config.type = 'bar'
+            dynamicChart.update()
+        })
+
+    </script>
+
+</body>
+
+</html>

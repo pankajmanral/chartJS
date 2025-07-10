@@ -1,0 +1,9 @@
+scales : {
+    y : {
+        max : 100,
+        ticks : {
+            stepSize : 20,
+            autoSkip : false -> !important
+        }
+    }
+}

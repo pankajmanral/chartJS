@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efficiency Optimization Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f0f0f0;
+    }
+    canvas {
+      background: white;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="efficiencyChart" width="1000" height="500"></canvas>
+
+  <script>
+    const ctx = document.getElementById('efficiencyChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Seattle HQ', 'San Francisco', 'Tokyo'],
+        datasets: [
+          {
+            label: 'Employees',
+            data: [150, 100, 50],
+            backgroundColor: 'rgba(123, 104, 238, 0.8)',
+            yAxisID: 'yEmployees'
+          },
+          {
+            label: 'Employees Optimized',
+            data: [140, 75, 30],
+            backgroundColor: 'rgba(218, 112, 214, 0.8)',
+            yAxisID: 'yEmployees'
+          },
+          {
+            label: 'Profit',
+            data: [180, 200, 210],
+            backgroundColor: 'rgba(255, 165, 0, 0.8)',
+            yAxisID: 'yProfit'
+          },
+          {
+            label: 'Profit Optimized',
+            data: [210, 220, 230],
+            backgroundColor: 'rgba(178, 34, 34, 0.8)',
+            yAxisID: 'yProfit'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Efficiency Optimization by Branch',
+            font: {
+              size: 20
+            }
+          },
+          legend: {
+            position: 'top'
+          }
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: 'green',
+              font: {
+                weight: 'bold'
+              }
+            },
+            grid: {
+              display: false
+            }
+          },
+          yEmployees: {
+            position: 'left',
+            title: {
+              display: true,
+              text: 'Employees',
+              color: 'red'
+            },
+            ticks: {
+              color: 'red'
+            },
+            grid: {
+              color: 'transparent'
+            }
+          },
+          yProfit: {
+            position: 'right',
+            title: {
+              display: true,
+              text: 'Profit (millions)',
+              color: 'red'
+            },
+            ticks: {
+              color: 'red'
+            },
+            grid: {
+              drawOnChartArea: false
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

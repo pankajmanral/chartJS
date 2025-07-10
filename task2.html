@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Task 2</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: rgb(255, 166, 0);
+    }
+</style>
+
+<body>
+
+    <div class="chart-wrapper">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+
+        const myChart = document.getElementById('myChart')
+
+        new Chart(myChart, {
+            type: 'bar',
+            data: {
+                labels: ['Seattle HQ', 'San Francisco', 'Tokyo'],
+                datasets: [
+                    {
+                        label: 'Employees',
+                        backgroundColor: 'rgb(255, 0, 0)',
+                        data: [150, 56, 110],
+                        categoryPercentage: .15,
+                        yAxisID: 'yEmployee'
+                    },
+                    {
+                        label: 'Employee Optimized',
+                        data: [120, 100, 80],
+                        backgroundColor: 'rgba(255, 0, 0, 0.4)',
+                        categoryPercentage: .3,
+                        yAxisID: 'yEmployee'
+                    },
+                    // {
+                    //     label: 'Profit',
+                    //     data: [115, 110, 200],
+                    //     backgroundColor: 'rgb(255, 166, 0)',
+                    //     categoryPercentage: .4,
+                    //     yAxisID: 'yProfit'
+                    // },
+                    // {
+                    //     label: 'Profit Optimsed',
+                    //     backgroundColor: 'rgb(255, 166, 0, 0.4)',
+                    //     data: [110, 125, 80],
+                    //     categoryPercentage: .2,
+                    //     yAxisID: 'yProfit'
+                    // }
+                ]
+            },
+            options: {
+                scales: {
+                    yEmployee: {
+                        position: 'left',
+                        min: 0,
+                        max: 150,
+                        title: {
+                            display: true,
+                            text: 'Employee'
+                        },
+                        ticks: {
+                            stepSize: 25,
+                            autoSkip: false
+                        },
+                        grid: {
+                            display: false
+                        }
+                    },
+                    yProfit: {
+                        position: 'right',
+                        min: 0,
+                        max: 250,
+                        title: {
+                            display: true,
+                            text: 'Profit'
+                        },
+                        ticks: {
+                            stepSize: 50,
+                            autoSkip: false
+                        }
+                    },
+                    x: {
+                        stacked: true,
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
