@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Task 5</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chart-wrapper {
+        width: 100%;
+        max-width: 900px;
+        color: rgb(167, 93, 50);
+    }
+</style>
+
+<body>
+
+    <div class="chart-wrapper">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+
+        const myChart = document.getElementById('myChart')
+
+        new Chart(myChart, {
+            type: 'line',
+            data: {
+                labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                datasets: [
+                    {
+                        label: 'Total',
+                        data: [80, 117, 110, 110, 108, 119, 130],
+                        borderColor: 'rgb(15, 121, 207)',
+                        backgroundColor: 'rgb(15, 121, 207)',
+                        tension: .3
+                    },
+                    {
+                        label: 'Accepted',
+                        data: [70, 85, 44, 60, 83, 90, 100],
+                        borderColor: 'rgb(55, 177, 55)',
+                        backgroundColor: 'rgb(55, 177, 55)',
+                        tension: .3
+                    },
+                    {
+                        label: 'Pending',
+                        data: [10, 20, 60, 44, 18, 20, 18],
+                        borderColor: 'rgb(255, 188, 5)',
+                        backgroundColor: 'rgb(255, 188, 5)',
+                        tension: .3
+                    },
+                    {
+                        label: 'Rejected',
+                        data: [8, 4, 4, 3, 7, 2, 18],
+                        borderColor: 'rgb(167, 93, 50)',
+                        backgroundColor: 'rgb(167, 93, 50)',
+                        tension: .3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 140,
+                        ticks: {
+                            stepSize: 20,
+                            autoSkip: false
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Line-Curve Chart',
+                        position : 'top',
+                        align : 'start',
+                        color : 'rgb(127, 44, 175)',
+                        font : {
+                            size : 30
+                        }
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Task 4</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chart-wrapper {
+        width: 100%;
+        max-width: 900px;
+    }
+</style>
+
+<body>
+
+    <div class="chart-wrapper">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+
+        const myChart = document.getElementById('myChart')
+
+        new Chart(myChart, {
+            data: {
+                labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6', 'Category 7'],
+                datasets: [
+                    {
+                        type: 'line',
+                        data: [30, 50, 70, 87, 92, 93, 92],
+                        yAxisID: 'line',
+                        borderColor : 'rgb(191, 127, 228)',
+                        pointRadius : 10,
+                        pointBackgroundColor : 'rgb(191, 127, 228)',
+                        tension : .2
+                    },
+                    {
+                        type: 'bar',
+                        data: [3500, 3000, 2500, 2000, 900, 500, 200],
+                        yAxisID: 'bar',
+                        backgroundColor : 'rgb(127, 44, 175)',
+                    }
+                ]
+            },
+            options: {
+                plugins : {
+                    legend : {display : false} ,
+                    title : {
+                        display : true,
+                        text : 'Pareto Chart Example',
+                        position : 'top',
+                        color : 'rgb(127, 44, 175)',
+                        font : {
+                            size : 20
+                        }
+                    }
+                },
+                scales: {
+                    bar: {
+                        position: 'left',
+                        min: 0,
+                        max: 10000,
+                        ticks: {
+                            stepSize: 1000,
+                            autoSkip: false
+                        },
+                        grid : {
+                            display : false
+                        }
+                    },
+                    line: {
+                        position: 'right',
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20,
+                            autoSkip: false
+                        },
+                        grid : {
+                            display : false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Task 10</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chart-wrapper {
+        width: 100%;
+        max-width: 900px;
+        color: rgb(46, 170, 88);
+    }
+</style>
+
+<body>
+
+    <div class="chart-wrapper">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+
+        const myChart = document.getElementById('myChart')
+
+        new Chart(myChart, {
+            type: 'bar',
+            data: {
+                labels: ['Sales department 1', 'Sales department 2', 'Sales department 3', 'Sales department 4', 'Sales department 5'],
+                datasets: [
+                    {
+                        label: 'First quater',
+                        data: [699, 800, 870, 1098, 1234],
+                        backgroundColor: 'rgb(255, 166, 0)'
+                    },
+                    {
+                        label: 'Second quater',
+                        data: [630, 988, 590, 488, 458],
+                        backgroundColor : 'rgb(0, 183, 255)'
+                    },
+                    {
+                        label: 'Third quater',
+                        data: [892, 814, 646, 992, 936],
+                        backgroundColor : 'rgb(245, 57, 82)'
+                    },
+                    {
+                        label: 'Fourth quater',
+                        data: [774, 796, 618, 650, 690],
+                        backgroundColor : 'rgb(46, 170, 88)'
+                    },
+                ]
+            },
+            options : {
+                scales : {
+                    y : {
+                        beginAtZero : true,
+                        min : 0,
+                        max : 1400,
+                        ticks : {
+                            stepSize : 200
+                        },
+                        border : {
+                            display : false
+                        }
+                    },
+                    x : {
+                        grid : {
+                            display : false
+                        }
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

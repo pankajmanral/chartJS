@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- chart js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+    <title>Task 7</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chart-wrapper {
+        width: 100%;
+        max-width: 900px;
+    }
+</style>
+
+<body>
+
+    <div class="chart-wrapper">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+
+        const myChart = document.getElementById('myChart')
+        Chart.register(ChartDataLabels)
+
+        const chartData = [7.74, 3.20, 0.41, -2.41, -4.22, -7.69];
+
+        new Chart(myChart, {
+            type: 'bar',
+            data: {
+                labels: ['Investing On All Days', 'Missed 5 Best Days', 'Missed 10 Best Days', 'Missed 15 Best Days', 'Missed 20 Best Days', 'Missed 30 Best Days'],
+                datasets: [{
+                    data: chartData,
+                    backgroundColor: chartData.map(e => e >= 0 ? 'rgb(23, 119, 23)' : 'rgb(63, 116, 160)')
+                }]
+            },
+            options: {
+                responsive : true,
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        min: -10,
+                        max: 10,
+                        ticks: {
+                            callback: function (value) {
+                                return value + '%'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'CAGR Returns - S&P BSE Sensex',
+                        font : {
+                            size : 20
+                        }
+                    },
+                    subtitle : {
+                        display : true,
+                        text : 'Source : Internal calculations. Data sourced from MFI explorer, ICRA online. Data from 31 March 2008 - 28 March 2018',
+                        position : 'bottom',
+                        font : {
+                            size : 12,
+                            weight : 'bold',
+                        },
+                        padding : {
+                            top : 20
+                        }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        offset: -3
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (e) {
+                                return e.parsed.y + '%';
+                            }
+                        }
+                    },
+                    legend : {
+                        display : false
+                    }
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
